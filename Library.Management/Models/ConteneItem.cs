@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Library.Management.Models
 {
-    internal class Class1
+    public class ContentItem
     {
+        public string? Name { get; set; }
+        public string? Description { get; set; }
+        public string? Path { get; set; }
+
     }
 }

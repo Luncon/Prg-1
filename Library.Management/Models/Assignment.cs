@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Library.Management.Models
 {
-    internal class Class1
+    public class Assignment
     {
+        public string? Name { get; set; }
+        public string? Description { get; set; }
+        public decimal TotalAvailablePoints { get; set; }
+        public DateTime DueDate { get; set; }
+
     }
 }

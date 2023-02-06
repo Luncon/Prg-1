@@ -1,5 +1,4 @@
 ﻿using Library.Management.Models;
-using System;
 
 namespace MyApp
 {
@@ -7,6 +6,11 @@ namespace MyApp
     {
         static void Main(string[] args)
         {
+
+            Console.WriteLine("hi");
+
+            var myCourse = new Course();
+            /*
             List<Person> StudentList = new List<Person>();
             Console.WriteLine("What is the name of the student?");
             var name = Console.ReadLine();
@@ -22,7 +26,7 @@ namespace MyApp
                 Classification = string.IsNullOrEmpty(classification) ? 'F' : classification.ToUpper()[0]
             };
             StudentList.Add(student);
-            StudentList.ForEach(Console.WriteLine());
+            StudentList.ForEach(Console.WriteLine());  */
         }
     }
 }
