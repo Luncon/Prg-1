@@ -7,7 +7,7 @@
         public char Classification { get; set; }
         public Person()
         {
-            Name =
+            Name = string.Empty;
             Grades = new Dictionary<int, double>();
         }
     }
