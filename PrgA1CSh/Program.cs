@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 
 namespace MyApp
 {
@@ -6,7 +6,9 @@ namespace MyApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine()
+            Console.WriteLine("hi");
+
+            var myCourse = new Course();
         }
     }
 }
