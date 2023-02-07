@@ -27,8 +27,12 @@ namespace PrgA1CSh.Helpers
                 Description = description
             };
             courseService.Add(course);
+        }
 
+        public void ListCourses()
+        {
             courseService.courseList.ForEach(Console.WriteLine);
         }
+
     }
 }
