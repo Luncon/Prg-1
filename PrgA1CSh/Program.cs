@@ -11,6 +11,7 @@ namespace MyApp
         {
             var studentHelper = new StudentHelper();
             var courseHelper = new CourseHelper();
+            
             bool cont = true;
 
             while (cont)

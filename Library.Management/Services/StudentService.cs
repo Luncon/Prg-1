@@ -9,23 +9,42 @@ namespace Library.Management.Services
 {
     public class StudentService
     {
-        private List<Person> StudentList = new List<Person>();
+        private List<Person> studentList;
+
+        private static StudentService? instance;
+        private StudentService()
+        {
+            studentList = new List<Person>();
+        }
+
+        public static StudentService Current
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new StudentService();
+                }
+                return instance;
+            }
+        }
+
         public void Add(Person student)
         {
-            StudentList.Add(student);
+            studentList.Add(student);
         }
 
         public List<Person> Students
         {
             get
             {
-                return StudentList;
+                return studentList;
             }
         }
 
         public IEnumerable<Person> Search(string q)
         {
-            return StudentList.Where(s => s.Name.ToUpper().Contains(q.ToUpper()));
+            return studentList.Where(s => s.Name.ToUpper().Contains(q.ToUpper()));
         }
     }
 }
