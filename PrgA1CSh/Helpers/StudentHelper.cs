@@ -51,9 +51,12 @@ namespace PrgA1CSh.Helpers
             };
 
             studentService.Add(student);
-            studentService.StudentList.ForEach(student => Console.WriteLine(student));
         }
 
+        public void ListStudents ()
+        {
+            studentService.Students.ForEach(Console.WriteLine);
+        }
 
     }
 }

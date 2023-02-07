@@ -1,5 +1,7 @@
 ﻿using Library.Management.Models;
+using Library.Management.Services;
 using PrgA1CSh.Helpers;
+using System;
 
 namespace MyApp
 {
@@ -8,22 +10,31 @@ namespace MyApp
         static void Main(string[] args)
         {
             var studentHelper = new StudentHelper();
-            Console.WriteLine("Choose an action");
-            Console.WriteLine("Add Student to Enrollment (1)");
-            Console.WriteLine("Exit (2)");
-            var input = Console.ReadLine();
 
-            if (int.TryParse(input, out int value))
+            bool cont = true;
+
+            while (cont)
             {
-                while (value != 2)
+                Console.WriteLine("Choose an action");
+                Console.WriteLine("Add Student to Enrollment (1)");
+                Console.WriteLine("List All Enrolled Students (2)");
+                Console.WriteLine("Exit ()");
+                var input = Console.ReadLine();
+                if (int.TryParse(input, out int value))
                 {
+  
                     if (value == 1)
                     {
                         studentHelper.CreateStudentRecord();
                     }
-
-                    input = Console.ReadLine();
-                    int.TryParse(input, out value);
+                    else if (value == 2)
+                    {
+                        studentHelper.ListStudents();
+                    }
+                    else if (value == 3)
+                    {
+                        cont = false;
+                    }
                 }
             }
         }

@@ -14,5 +14,13 @@ namespace Library.Management.Services
         {
             StudentList.Add(student);
         }
+
+        public List<Person> Students
+        {
+            get
+            {
+                return StudentList;
+            }
+        }
     }
 }
