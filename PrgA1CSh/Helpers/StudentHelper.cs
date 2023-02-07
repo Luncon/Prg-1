@@ -11,7 +11,7 @@ namespace PrgA1CSh.Helpers
     internal class StudentHelper
     {
         private StudentService studentService = new StudentService();
-        public void CreateStudentRecord()
+        public void CreateStudentRecord(Person? selStudent = null)
         {
             
             Console.WriteLine("What is the name of the student?");
@@ -43,16 +43,40 @@ namespace PrgA1CSh.Helpers
                 classEnum = PersonClassification.Freshman;
             }
 
-            var student = new Person
+            bool isCreate = false;
+            if(selStudent == null)
             {
-                Id = int.Parse(id ?? "0"),
-                Name = name ?? string.Empty,
-                Classification = classEnum
-            };
+                isCreate = true;
+                selStudent = new Person();
+            }
 
-            studentService.Add(student);
+            selStudent.Id = int.Parse(id ?? "0");
+            selStudent.Name = name ?? string.Empty;
+            selStudent.Classification = classEnum;
+
+            if(isCreate)
+            {
+                studentService.Add(selStudent);
+            }
         }
 
+        public void UpdateStudentRecord()
+        {
+            Console.WriteLine("Select a student to update");
+            ListStudents();
+
+            var selstr = Console.ReadLine() ?? string.Empty;
+
+            if(int.TryParse(selstr, out int selInt))
+            {
+                var selStudent = studentService.Students.FirstOrDefault(s => s.Id == selInt);
+                if(selStudent != null)
+                {
+                    CreateStudentRecord(selStudent);
+                }
+            
+            }
+        }
         public void ListStudents ()
         {
             studentService.Students.ForEach(Console.WriteLine);
