@@ -58,5 +58,12 @@ namespace PrgA1CSh.Helpers
             studentService.Students.ForEach(Console.WriteLine);
         }
 
+        public void SearchStudents()
+        {
+            Console.WriteLine("Enter a Query: ");
+            var q = Console.ReadLine() ?? string.Empty;
+
+            studentService.Search(q).ToList().ForEach(Console.WriteLine);
+        }
     }
 }
