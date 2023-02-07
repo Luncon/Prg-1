@@ -10,7 +10,12 @@ namespace PrgA1CSh.Helpers
 {
     internal class StudentHelper
     {
-        private StudentService studentService = new StudentService();
+        private StudentService studentService;
+
+        public StudentHelper()
+        {
+            studentService = StudentService.Current;
+        }
         public void CreateStudentRecord(Person? selStudent = null)
         {
             
