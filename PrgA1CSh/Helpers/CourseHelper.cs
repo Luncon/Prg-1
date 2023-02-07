@@ -34,7 +34,6 @@ namespace PrgA1CSh.Helpers
             if(isNewCourse )
             {
                 courseService.Add(selectedCourse);
-                courseService.Courses.ForEach(Console.WriteLine);
             }
             
         }
@@ -58,5 +57,12 @@ namespace PrgA1CSh.Helpers
             courseService.Courses.ForEach(Console.WriteLine);
         }
 
+        public void SearchCourses()
+        {
+            Console.WriteLine("Enter a Query:");
+            var query = Console.ReadLine() ?? string.Empty;
+
+            courseService.Search(query).ToList().ForEach(Console.WriteLine);
+        }
     }
 }
