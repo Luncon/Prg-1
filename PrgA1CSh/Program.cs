@@ -10,7 +10,7 @@ namespace MyApp
         static void Main(string[] args)
         {
             var studentHelper = new StudentHelper();
-
+            var courseHelper = new CourseHelper();
             bool cont = true;
 
             while (cont)
@@ -19,6 +19,7 @@ namespace MyApp
                 Console.WriteLine("Add Student to Enrollment (1)");
                 Console.WriteLine("List All Enrolled Students (2)");
                 Console.WriteLine("Search for a Student (3)");
+                Console.WriteLine("Add a New Course (4)");
                 Console.WriteLine("Exit (0)");
                 var input = Console.ReadLine();
                 if (int.TryParse(input, out int value))
@@ -35,6 +36,10 @@ namespace MyApp
                     else if (value == 3)
                     {
                         studentHelper.SearchStudents(); 
+                    }
+                    else if (value == 4)
+                    {
+                        courseHelper.CreateCourseRecord();
                     }
                     else if (value == 0)
                     {
