@@ -15,11 +15,11 @@ namespace PrgA1CSh.Helpers
         {
             
             Console.WriteLine("What is the name of the student?");
-            var name = Console.ReadLine();
+            var name = Console.ReadLine() ?? string.Empty;
             Console.WriteLine("What is the ID of the student");
-            var id = Console.ReadLine();
+            var id = Console.ReadLine() ?? string.Empty;
             Console.WriteLine("What is the classification of the student? (Fr, So, Ju, Se) ");
-            var classification = Console.ReadLine();
+            var classification = Console.ReadLine() ?? string.Empty;
             PersonClassification classEnum = PersonClassification.Freshman;
 
             if (classification.Equals("Fr", StringComparison.InvariantCultureIgnoreCase))
