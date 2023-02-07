@@ -9,7 +9,7 @@ namespace Library.Management.Services
 {
     public class StudentService
     {
-        public List<Person> StudentList = new List<Person>();
+        private List<Person> StudentList = new List<Person>();
         public void Add(Person student)
         {
             StudentList.Add(student);
