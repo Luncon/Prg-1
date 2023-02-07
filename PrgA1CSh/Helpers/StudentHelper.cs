@@ -11,10 +11,11 @@ namespace PrgA1CSh.Helpers
     internal class StudentHelper
     {
         private StudentService studentService;
-
+        private CourseService courseService;
         public StudentHelper()
         {
             studentService = StudentService.Current;
+            courseService = CourseService.Current;
         }
         public void CreateStudentRecord(Person? selStudent = null)
         {
@@ -85,14 +86,29 @@ namespace PrgA1CSh.Helpers
         public void ListStudents ()
         {
             studentService.Students.ForEach(Console.WriteLine);
+
+            Console.WriteLine("Select a Student:");
+            var selectionStr = Console.ReadLine();
+            var selectionInt = int.Parse(selectionStr ?? "0");
+
+            Console.WriteLine("Student Course List:");
+            courseService.Courses.Where(c => c.Roster.Any(s => s.Id == selectionInt)).ToList().ForEach(Console.WriteLine);
         }
 
         public void SearchStudents()
         {
+            
+
             Console.WriteLine("Enter a Query: ");
             var q = Console.ReadLine() ?? string.Empty;
 
             studentService.Search(q).ToList().ForEach(Console.WriteLine);
+
+            var selectionStr = Console.ReadLine();
+            var selectionInt = int.Parse(selectionStr ?? "0");
+
+            Console.WriteLine("Student Course List:");
+            courseService.Courses.Where(c => c.Roster.Any(s => s.Id == selectionInt)).ToList().ForEach(Console.WriteLine);
         }
     }
 }
