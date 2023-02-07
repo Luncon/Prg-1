@@ -11,7 +11,7 @@ namespace PrgA1CSh.Helpers
     {
         private CourseService courseService = new CourseService();
 
-        public void CreateCourseRecord()
+        public void CreateCourseRecord(Course? selectedCourse = null)
         {
             Console.WriteLine("What is the code of the course?");
             var code = Console.ReadLine() ?? string.Empty;
@@ -20,18 +20,42 @@ namespace PrgA1CSh.Helpers
             Console.WriteLine("What is the description of the course? () ");
             var description = Console.ReadLine() ?? string.Empty;
 
-            var course = new Course
+            bool isNewCourse = false;
+            if(selectedCourse == null)
             {
-                Code = code,
-                Name = name,
-                Description = description
-            };
-            courseService.Add(course);
+                isNewCourse= true;
+                selectedCourse = new Course();
+            }
+
+
+            selectedCourse.Code = code;
+            selectedCourse.Name = name;
+            selectedCourse.Description = description;
+            if(isNewCourse )
+            {
+                courseService.Add(selectedCourse);
+                courseService.Courses.ForEach(Console.WriteLine);
+            }
+            
         }
 
+
+        public void UpdateCourseRecord()
+        {
+            Console.WriteLine("Enter Course Code:");
+            ListCourses();
+
+            var selection = Console.ReadLine() ?? string.Empty;
+
+            var selectedCourse = courseService.Courses.FirstOrDefault(s => s.Code.Equals(selection, StringComparison.InvariantCultureIgnoreCase));
+            if(selectedCourse!= null)
+            {
+                CreateCourseRecord(selectedCourse);
+            }
+        }
         public void ListCourses()
         {
-            courseService.courseList.ForEach(Console.WriteLine);
+            courseService.Courses.ForEach(Console.WriteLine);
         }
 
     }
