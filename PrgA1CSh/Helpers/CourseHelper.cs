@@ -9,12 +9,13 @@ namespace PrgA1CSh.Helpers
 {
     internal class CourseHelper
     {
-        private CourseService courseService = new CourseService();
+        private CourseService courseService;
         private StudentService studentService;
 
         public CourseHelper()
         {
             studentService = StudentService.Current;
+            courseService = CourseService.Current;
         }
         public void CreateCourseRecord(Course? selectedCourse = null)
         {
