@@ -1,4 +1,5 @@
 ﻿using Library.Management.Models;
+using PrgA1CSh.Helpers;
 
 namespace MyApp
 {
@@ -6,27 +7,25 @@ namespace MyApp
     {
         static void Main(string[] args)
         {
+            var studentHelper = new StudentHelper();
+            Console.WriteLine("Choose an action");
+            Console.WriteLine("Add Student to Enrollment (1)");
+            Console.WriteLine("Exit (2)");
+            var input = Console.ReadLine();
 
-            Console.WriteLine("hi");
-
-            var myCourse = new Course();
-            /*
-            List<Person> StudentList = new List<Person>();
-            Console.WriteLine("What is the name of the student?");
-            var name = Console.ReadLine();
-            Console.WriteLine("What is the classification of the student?");
-            var classification = Console.ReadLine();
-            Console.WriteLine("What is the ID of the student");
-            var id = Console.ReadLine();
-
-            var student = new Person
+            if (int.TryParse(input, out int value))
             {
-                Id = int.Parse(id ?? "0"),
-                Name = name ?? string.Empty,
-                Classification = string.IsNullOrEmpty(classification) ? 'F' : classification.ToUpper()[0]
-            };
-            StudentList.Add(student);
-            StudentList.ForEach(Console.WriteLine());  */
+                while (value != 2)
+                {
+                    if (value == 1)
+                    {
+                        studentHelper.CreateStudentRecord();
+                    }
+
+                    input = Console.ReadLine();
+                    int.TryParse(input, out value);
+                }
+            }
         }
     }
 }
