@@ -18,7 +18,8 @@ namespace MyApp
                 Console.WriteLine("Choose an action");
                 Console.WriteLine("Add Student to Enrollment (1)");
                 Console.WriteLine("List All Enrolled Students (2)");
-                Console.WriteLine("Exit ()");
+                Console.WriteLine("Search for a Student (3)");
+                Console.WriteLine("Exit (0)");
                 var input = Console.ReadLine();
                 if (int.TryParse(input, out int value))
                 {
@@ -32,6 +33,10 @@ namespace MyApp
                         studentHelper.ListStudents();
                     }
                     else if (value == 3)
+                    {
+                        studentHelper.SearchStudents(); 
+                    }
+                    else if (value == 0)
                     {
                         cont = false;
                     }

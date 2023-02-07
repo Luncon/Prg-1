@@ -22,5 +22,10 @@ namespace Library.Management.Services
                 return StudentList;
             }
         }
+
+        public IEnumerable<Person> Search(string q)
+        {
+            return StudentList.Where(s => s.Name.ToUpper().Contains(q.ToUpper()));
+        }
     }
 }
