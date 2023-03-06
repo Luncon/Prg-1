@@ -9,12 +9,12 @@ namespace Library.Management.Services
 {
     public class StudentService
     {
-        private List<Person> studentList;
+        private List<Student> studentList;
 
         private static StudentService? instance;
         private StudentService()
         {
-            studentList = new List<Person>();
+            studentList = new List<Student>();
         }
 
         public static StudentService Current
@@ -29,12 +29,12 @@ namespace Library.Management.Services
             }
         }
 
-        public void Add(Person student)
+        public void Add(Student student)
         {
             studentList.Add(student);
         }
 
-        public List<Person> Students
+        public List<Student> Students
         {
             get
             {
@@ -42,7 +42,7 @@ namespace Library.Management.Services
             }
         }
 
-        public IEnumerable<Person> Search(string q)
+        public IEnumerable<Student> Search(string q)
         {
             return studentList.Where(s => s.Name.ToUpper().Contains(q.ToUpper()));
         }

@@ -53,6 +53,40 @@ namespace PrgA1CSh.Helpers
                 }
             }
 
+            Console.WriteLine("Would you like to add assignments (Y/N)");
+            var assignResponse = Console.ReadLine() ?? "N";
+            var assignments = new List<Assignment> ();
+            if(assignResponse.Equals("Y", StringComparison.InvariantCultureIgnoreCase))
+            {
+                continueAdding = true;
+                while(continueAdding)
+                {
+                    Console.WriteLine("Name: ");
+                    var assignmentName = Console.ReadLine() ?? string.Empty;
+                    Console.WriteLine("Description: ");
+                    var assignmentDescription = Console.ReadLine() ?? string.Empty;
+                    Console.WriteLine("TotalPoints: ");
+                    var totalPoints = decimal.Parse(Console.ReadLine() ?? "100");
+                    Console.WriteLine("DueDate: ");
+                    var dueDate = DateTime.Parse(Console.ReadLine() ?? "01/01/1900");
+
+                    assignments.Add(new Assignment
+                    {   
+                        Name = assignmentName, 
+                        Description = assignmentDescription, 
+                        TotalAvailablePoints = totalPoints, 
+                        DueDate = dueDate
+
+                    });
+                    Console.WriteLine("Add more course? (Y/N)");
+                    assignResponse = Console.ReadLine() ?? "N";
+                    if (assignResponse.Equals("N", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        continueAdding = false;
+                    }
+                }
+            }
+
             bool isNewCourse = false;
             if(selectedCourse == null)
             {
@@ -65,8 +99,9 @@ namespace PrgA1CSh.Helpers
             selectedCourse.Name = name;
             selectedCourse.Description = description;
             selectedCourse.Roster = new List<Person>();
-            selectedCourse.Roster = roster;
-
+            selectedCourse.Roster.AddRange(roster);
+            selectedCourse.Assignments = new List<Assignment>();
+            selectedCourse.Assignments.AddRange(assignments);
             if(isNewCourse )
             {
                 courseService.Add(selectedCourse);
@@ -78,7 +113,7 @@ namespace PrgA1CSh.Helpers
         public void UpdateCourseRecord()
         {
             Console.WriteLine("Enter Course Code:");
-            ListCourses();
+            SearchCourses();
 
             var selection = Console.ReadLine() ?? string.Empty;
 
@@ -88,17 +123,27 @@ namespace PrgA1CSh.Helpers
                 CreateCourseRecord(selectedCourse);
             }
         }
-        public void ListCourses()
-        {
-            courseService.Courses.ForEach(Console.WriteLine);
-        }
 
-        public void SearchCourses()
+        public void SearchCourses(string? query = null)
         {
-            Console.WriteLine("Enter a Query:");
-            var query = Console.ReadLine() ?? string.Empty;
+            if (string.IsNullOrEmpty(query))
+            {
+                courseService.Courses.ForEach(Console.WriteLine);
+            }
+            else
+            {
+                courseService.Search(query).ToList().ForEach(Console.WriteLine);
+            }
 
-            courseService.Search(query).ToList().ForEach(Console.WriteLine);
+            Console.WriteLine("Select a course:");
+            var code = Console.ReadLine() ?? string.Empty;
+
+            var selectedCourse = courseService
+                .Courses.FirstOrDefault(c => c.Code.Equals(code,StringComparison.InvariantCultureIgnoreCase));
+            if(selectedCourse!= null)
+            {
+                Console.WriteLine(selectedCourse.DetailDisplay);
+            }
         }
     }
 }

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrgA1CSh", "PrgA1CSh\PrgA1CSh.csproj", "{BE46D5B6-0418-4305-A848-C85A2814310F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrgA1CSh", "PrgA1CSh\PrgA1CSh.csproj", "{BE46D5B6-0418-4305-A848-C85A2814310F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Management", "Library.Management\Library.Management.csproj", "{979C577E-2634-4A2D-AA33-FED363E8EA7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Management", "Library.Management\Library.Management.csproj", "{979C577E-2634-4A2D-AA33-FED363E8EA7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -17,7 +17,7 @@ namespace PrgA1CSh.Helpers
             studentService = StudentService.Current;
             courseService = CourseService.Current;
         }
-        public void CreateStudentRecord(Person? selStudent = null)
+        public void CreateStudentRecord(Student? selStudent = null)
         {
             
             Console.WriteLine("What is the name of the student?");
@@ -53,7 +53,7 @@ namespace PrgA1CSh.Helpers
             if(selStudent == null)
             {
                 isCreate = true;
-                selStudent = new Person();
+                selStudent = new Student();
             }
 
             selStudent.Id = int.Parse(id ?? "0");

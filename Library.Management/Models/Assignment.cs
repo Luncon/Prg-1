@@ -13,5 +13,9 @@ namespace Library.Management.Models
         public decimal TotalAvailablePoints { get; set; }
         public DateTime DueDate { get; set; }
 
+        public override string ToString()
+        {
+            return $"({DueDate}) {Name}";
+        }
     }
 }

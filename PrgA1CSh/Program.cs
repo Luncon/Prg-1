@@ -52,7 +52,7 @@ namespace MyApp
                     }
                     else if (value == 6)
                     {
-                        courseHelper.ListCourses();
+                        courseHelper.SearchCourses();
                     }
                     else if (value == 7)
                     {
@@ -60,7 +60,9 @@ namespace MyApp
                     }
                     else if (value == 8)
                     {
-                        courseHelper.SearchCourses();
+                        Console.WriteLine("Enter a Query:");
+                        var query = Console.ReadLine() ?? string.Empty;
+                        courseHelper.SearchCourses(query);
                     }
                     else if (value == 0)
                     {
